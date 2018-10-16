@@ -8,51 +8,41 @@
 <script>
   class EventEmitter {
     constructor(){
-      this.eventArray = [];
+      this.events = {};
+      this.onceEvents = {};
     }
 
-    on(eventName, defaultFunction){
-      let index = this.eventArray.findIndex((evt) => evt.eventName === eventName);
-      if(index === -1){
-        let evt = {};
-        evt.eventName = eventName;
-        evt.defaultFunction = defaultFunction;
-        this.eventArray.push(evt);
+    on(eventName, callBack){
+      if(typeof this.events[eventName] !== 'object'){
+        this.events[eventName] = [];
       }
-      else {
-        this.eventArray[index].defaultFunction = defaultFunction;
-      }
-
+      this.events[eventName].push(callBack);
     }
 
-    once(eventName, onceFunction ){
-      let index = this.eventArray.findIndex((evt) => evt.eventName === eventName);
-      if(index !== -1) {
-        this.eventArray[index].onceFunction = onceFunction;
+    once(eventName, callBackOnce){
+      if(typeof this.onceEvents[eventName] !== 'object'){
+        this.onceEvents[eventName] = [];
       }
-      else {
-        let evt = {};
-        evt.eventName = eventName;
-        evt.onceFunction = onceFunction;
-        this.eventArray.push(evt)
-      }
+      this.onceEvents[eventName].push(callBackOnce);
     }
 
     emit(eventName, ...args){
-      let index = this.eventArray.findIndex((evt) => evt.eventName === eventName);
-      if(index !== -1){
-        if(this.eventArray[index].hasOwnProperty('onceFunction')){
-          this.eventArray[index].onceFunction(args);
-          delete this.eventArray[index].onceFunction;
-        }
-        else {
-          this.eventArray[index].hasOwnProperty('defaultFunction') && this.eventArray[index].defaultFunction(args);
-        }
+      typeof this.events[eventName] === 'object' && this.events[eventName].forEach((cb) => cb(args));
+      if(typeof this.onceEvents[eventName] === 'object'){
+        this.onceEvents[eventName].forEach((cbo) => cbo(args))
+        delete this.onceEvents[eventName];
       }
+
     }
-    off(eventName, defaultFunction){
-      let index = this.eventArray.findIndex((evt) => evt.eventName === eventName);
-      index !== -1 && this.eventArray.splice(index, 1);
+    off(eventName, callBack){
+      if(typeof this.events[eventName] === 'object'){
+        let index = this.events[eventName].indexOf(callBack);
+        index !== -1 && this.events[eventName].splice(index, 1);
+      }
+      if(typeof this.onceEvents[eventName] === 'object'){
+        let index = this.onceEvents[eventName].indexOf(callBack);
+        index !== -1 && this.onceEvents[eventName].splice(index, 1);
+      }
     }
   }
   var eventEmitter = new EventEmitter();
@@ -61,13 +51,12 @@
       console.log(msg);
   }
 
-  eventEmitter.on('anotherEvent', responseToEvent);
+  eventEmitter.on('pramp', responseToEvent);
   eventEmitter.once('pramp', function(msg) { console.log(msg + ' just once!'); });
   eventEmitter.emit('pramp', '1st');
   eventEmitter.emit('pramp', '2nd');
   eventEmitter.off('pramp', responseToEvent);
   eventEmitter.emit('pramp', '3rd');
-  eventEmitter.on('pramp', () => {console.log('another callback');});
   eventEmitter.emit('pramp', '1st');
   </script>
   </body>
