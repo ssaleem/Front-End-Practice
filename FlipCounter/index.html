@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip Counter</title>
+    <style>
+      * {
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .container {
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .timer {
+        background-color: grey;
+        border: solid black 4px;
+        font-size: 28px;
+        padding: 16px;
+        margin: 4px;
+        transition: transform 0.55s;
+      }
+
+      .flip {
+        transform: rotateX(360deg);
+      }
+    </style>
+</head>
+<body>
+  <h1>Flip Counter</h1>
+  <div class="container">
+    <div id='mytimer-tens' class="timer">0</div>
+    <div id='mytimer-ones' class="timer">0</div>
+    </div>
+  </div>
+<script>
+
+  const myTimerTens = document.getElementById('mytimer-tens');
+  const myTimerOnes = document.getElementById('mytimer-ones');
+  const LIMIT = 59;
+  const INTERVAL = 1000;
+  let counter = 0;
+
+  var sI = setInterval(function(){
+    counter++;
+    if(counter > LIMIT){
+      counter = 0;
+    }
+    if(counter % 10 === 0) {
+      myTimerTens.classList.toggle('flip');
+      myTimerTens.innerHTML = counter/10;
+    }
+    myTimerOnes.classList.toggle('flip');
+    myTimerOnes.innerHTML = counter % 10;
+  }, INTERVAL);
+
+</script>
+</body>
+</html>
