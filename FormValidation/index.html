@@ -62,6 +62,7 @@
     function validateForm() {
         const password = document.getElementById('password');
         const cpassword = document.getElementById('cpassword');
+        //document.forms is an alternate way to access form data
         if(document.forms['signup']['password'].value !== document.forms['signup']['cpassword'].value) {
             password.classList.add('invlid');
             cpassword.classList.add('invlid');
