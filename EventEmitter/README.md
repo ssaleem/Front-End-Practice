@@ -11,4 +11,5 @@ off: disable a specific listener
 ```
 
 A simple implementation...A work in progress...
+
 [Example for Reference](https://gist.github.com/mudge/5830382#gistcomment-2623252), using ES2015 Classes

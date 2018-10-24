@@ -13,33 +13,35 @@
     }
 
     on(eventName, callBack){
-      if(typeof this.events[eventName] !== 'object'){
+      if(!this.events[eventName]){  //undefined is falsy, [] is truthy
         this.events[eventName] = [];
       }
       this.events[eventName].push(callBack);
     }
 
     once(eventName, callBackOnce){
-      if(typeof this.onceEvents[eventName] !== 'object'){
+      if(!this.onceEvents[eventName]){
         this.onceEvents[eventName] = [];
       }
       this.onceEvents[eventName].push(callBackOnce);
     }
 
     emit(eventName, ...args){
-      typeof this.events[eventName] === 'object' && this.events[eventName].forEach((cb) => cb(args));
-      if(typeof this.onceEvents[eventName] === 'object'){
+      if(this.events[eventName]){
+        this.events[eventName].forEach((cb) => cb(args));
+      }
+      if(this.onceEvents[eventName]){
         this.onceEvents[eventName].forEach((cbo) => cbo(args))
         delete this.onceEvents[eventName];
       }
 
     }
     off(eventName, callBack){
-      if(typeof this.events[eventName] === 'object'){
+      if(this.events[eventName]){
         let index = this.events[eventName].indexOf(callBack);
         index !== -1 && this.events[eventName].splice(index, 1);
       }
-      if(typeof this.onceEvents[eventName] === 'object'){
+      if(this.onceEvents[eventName]){
         let index = this.onceEvents[eventName].indexOf(callBack);
         index !== -1 && this.onceEvents[eventName].splice(index, 1);
       }
@@ -53,6 +55,7 @@
 
   eventEmitter.on('pramp', responseToEvent);
   eventEmitter.once('pramp', function(msg) { console.log(msg + ' just once!'); });
+  eventEmitter.once('pramp', () => console.log('pramp'))
   eventEmitter.emit('pramp', '1st');
   eventEmitter.emit('pramp', '2nd');
   eventEmitter.off('pramp', responseToEvent);
