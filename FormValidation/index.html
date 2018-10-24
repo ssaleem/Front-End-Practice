@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up form</title>
+    <style>
+     body {
+        text-align: center;
+        box-sizing: border-box;
+     }
+
+     .sign-up-form {
+        width: 40%;
+        padding: 16px;
+        background-color: #AFEEEE;
+        margin: auto;
+        border-radius: 4px;
+     }
+
+     input {
+        width: 90%;
+        padding: 8px;
+        margin: 4px auto;
+        border: none;
+        border-bottom: #5F9EA0 solid 3px;
+        color: #5F9EA0;
+     }
+
+     input[type=submit] {
+        border: none;
+        background-color: #5F9EA0;
+        color: white;
+     }
+
+     label {
+        display: block;
+        padding: 8px;
+     }
+
+     .invlid {
+        border: #FF6347 solid 3px;
+     }
+
+    </style>
+</head>
+<body>
+    <h1>Signup Form</h1>
+<div class="sign-up-form">
+    <!-- method is set to post so that form data is not appended to url upon submission -->
+    <!-- onsubmit is the last place to validate form before submission -->
+    <form name="signup" class="signup-form" onsubmit="return validateForm()" method="post">
+        <label>First Name<br> <input type="text" name="firstname" required></label>
+        <label>Last Name<br> <input type="text" name="lastname" required></label>
+        <label>Email<br> <input type="email" name="email" required></label>
+        <label>Password<br> <input type="password" name="password" id="password" required></label>
+        <label>Confirm Password<br> <input type="password" name="cpassword" id="cpassword" required></label>
+        <br><input type="submit" name="submit" value="Submit">
+    </form>
+</div>
+<script>
+    //form is not submitted if onsubmit=false
+    function validateForm() {
+        const password = document.getElementById('password');
+        const cpassword = document.getElementById('cpassword');
+        if(document.forms['signup']['password'].value !== document.forms['signup']['cpassword'].value) {
+            password.classList.add('invlid');
+            cpassword.classList.add('invlid');
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
