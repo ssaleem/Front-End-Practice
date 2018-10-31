@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .calculator {
+      width: 20%;
+      margin: auto;
+      padding: 8px;
+      border: 2px solid grey;
+      border-radius: 6px;
+      box-shadow: 6px 6px 12px grey;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 2px;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    .result {
+      width: 100%;
+      border: 1px solid grey;
+      border-radius: 4px;
+      height: 2em;
+      font-size: 1.25em;
+      padding: 0.5em;
+      text-align: right;
+      /*to contain longer numbers within calculator display area*/
+      text-overflow: clip;
+      white-space: nowrap;
+      overflow: hidden;
+      background-color: #CAC9CAFF;
+    }
+
+    .big {
+      width: calc((100% - 8px)/2);
+      margin: 2px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .operands {
+      width: 75%;
+    }
+
+    .operation {
+      width: 25%;
+    }
+
+    input{
+      font-size: 1.25em;
+      outline: none;
+    }
+
+    input:hover {
+      border: 1px solid grey;
+    }
+
+    .operands > input {
+      width: calc((100% - 12px)/3);
+      margin: 2px;
+      padding: 10px;
+      border-radius: 6px;
+    }
+
+    .operation > button {
+      width: calc(100% - 4px);
+      margin: 2px;
+      padding: 10px;
+      border-radius: 6px;
+      background-color: grey;
+      font-size: 1.25em;
+      outline-color: grey;
+    }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <h1>Calculator</h1>
+    <div class="container">
+      <p class="result">0</p>
+      <input type="button" name="AC" value="AC" class="clear big">
+      <input type="button" name="=" value="=" class=" calculate big">
+      <div class="operands container">
+        <input type="button" name="7" value="7">
+        <input type="button" name="8" value="8">
+        <input type="button" name="9" value="9">
+        <input type="button" name="4" value="4">
+        <input type="button" name="5" value="5">
+        <input type="button" name="6" value="6">
+        <input type="button" name="1" value="1">
+        <input type="button" name="2" value="2">
+        <input type="button" name="3" value="3">
+        <input type="button" name="0" value="0">
+        <input type="button" name="." value=".">
+      </div>
+
+      <div class="operation container">
+        <button type="button" id="divide">&divide;</button>
+        <button type="button" id="multiply">&times;</button>
+        <button type="button" id="remove">-</button>
+        <button type="button" id="add">+</button>
+      </div>
+    </div>
+</div>
+<script>
+    const operandsDiv = document.querySelector('.operands');
+    const operationDiv = document.querySelector('.operation');
+    const resultElement = document.querySelector('.result');
+    const calculate = document.querySelector('.calculate');
+    const clear = document.querySelector('.clear');
+
+
+    let expression = '';
+    let result = null;
+    let lastResult = null;
+
+    operandsDiv.addEventListener('click', function(event){
+      lastResult !== null && (lastResult = null);
+      expression = `${expression}${event.target.value}`;
+      resultElement.innerHTML = expression;
+    });
+
+    operationDiv.addEventListener('click', function(event){
+      lastResult !== null && (expression = lastResult);
+      expression = `${expression} ${event.target.innerHTML} `;
+      resultElement.innerHTML = expression;
+    })
+
+    calculate.addEventListener('click', function(e){
+      expression = expression.replace(/÷/g, '/');
+      expression = expression.replace(/×/g, '*');
+      try {
+        result = eval(expression);  //evaluates string like javascript expression
+      }
+      catch(e){
+        console.log(e);
+        result = 0;
+      }
+      finally {
+        expression = '';
+        console.log(result);
+        result === null || result === undefined && (result = 0);
+        lastResult = result;
+        resultElement.innerHTML = result;
+      }
+    });
+
+    clear.addEventListener('click', function(){
+      expression = '';
+      resultElement.innerHTML = '0';
+    })
+</script>
+</body>
+</html>
