@@ -2,7 +2,7 @@
 
 - [Beginner Algorithm Scripting Challenges](#beginner-algorithm-scripting-challenges)
 - [Intermediate Algorithm Scripting Challenges](#intermediate-algorithm-scripting-challenges)
-- [Javascript Algorithms And Data Structures Certification Projects](javascript-algorithms-and-data-structures-certification-projects)
+- [Javascript Algorithms And Data Structures Certification Projects](#javascript-algorithms-and-data-structures-certification-projects)
 
 ## Beginner Algorithm Scripting Challenges
 
