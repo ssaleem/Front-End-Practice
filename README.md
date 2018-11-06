@@ -1,7 +1,7 @@
 # Front-End Practice
 This repository contains my solutions to online front-end learning and practice resources listed below.
 - [Pramp](https://www.pramp.com): front end mock interview problems
-- [freeCodeCamp]: front end challenges
+- [freeCodeCamp](https://learn.freecodecamp.org/): front end challenges
 
 ## Pramp
 ### Topics Covered
@@ -18,6 +18,4 @@ Below are the preview links for solutions involving UI.
 - [FormValidation](http://htmlpreview.github.io/?https://github.com/ssaleem/Front-End-Practice/blob/master/FormValidation/index.html)
 
 ## Free Code Camp
-This section contains my solution to [freeCodeCamp](https://learn.freecodecamp.org/) challenges and projects.
-
 - [Javascript Algorithms And Data Structures Certification Problems](./FCC/FreeCodeCampAlgoScripting.md)
