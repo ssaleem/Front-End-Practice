@@ -2,6 +2,7 @@
 This repository contains my solutions to online front-end learning and practice resources listed below.
 - [Pramp](https://www.pramp.com): front end mock interview problems
 - [freeCodeCamp](https://learn.freecodecamp.org/): front end challenges
+- [Fullstack Academy](https://www.fullstackacademy.com/): JavaScript problems
 
 ## Pramp
 ### Topics Covered
@@ -19,3 +20,7 @@ Below are the preview links for solutions involving UI.
 
 ## Free Code Camp
 - [Javascript Algorithms And Data Structures Certification Problems](./FCC/FreeCodeCampAlgoScripting.md)
+
+## Fullstack Academy
+- [Bootcamp Prep Problem Set](./FullstackAcad/FullStackAcademyProblemSet.md)
+
