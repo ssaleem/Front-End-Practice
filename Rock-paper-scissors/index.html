@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, paper, scissors</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- include bootstrap4 from cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  	<link rel="stylesheet" href="style.css">
+  	<link rel="icon" href="images/favicon.ico">
+  	<link href="https://fonts.googleapis.com/css?family=Acme|Montserrat" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid text-center">
+		<div class="row bg-info">
+			<div class="col-md-12">
+		<header>
+			<h1 class="display-4 mt-5 mb-5">Rock, paper, scissors <br></h1>
+		</header>
+	</div>
+		</div>
+		<div class="row mt-2">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<!-- title -->
+				<h3>Select one!!</h3>
+				<div class="btn-group mb-2" id="inputPicker">
+					<button class="btn btn-info" id="rock">Rock</button>
+					<button class="btn btn-info" id="paper">Paper</button>
+					<button class="btn btn-info" id="scissors">Scissors</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card bg-light">
+					<h3>Score</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Player</th>
+								<th>Computer</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="p-score">-</td>
+								<td id="c-score">-</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<button class="btn btn-info btn-block mt-2" id="reset">Reset Game</button>
+
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header">
+    					Player
+  					</div>
+					<img class="card-img-top img-fluid main-img-height" id="p-img" src="images/rock.png" alt="rock">
+					<div class="card-body">
+						<h4 class="card-title" id="p-text">rock</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-header">
+    					Computer
+  					</div>
+					<img class="card-img-top img-fluid main-img-height" id="c-img" src="images/rock.png" alt="rock">
+					<div class="card-body">
+						<h4 class="card-title" id="c-text">rock</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8 text-center mt-2">
+				<h3 id="result"></h3>
+				<h5 id="logic"></h5>
+			</div>
+		</div>
+		<!-- footer row -->
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<footer class="text-center small text-muted">Coded by <a href="https://github.com/ssaleem">Sara S.</a></footer>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	<script src="game.js"></script>
+</body>
+</html>

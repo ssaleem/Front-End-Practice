@@ -1,0 +1,14 @@
+h1,h3, h4,button {
+	font-family: 'Acme', sans-serif;
+}
+.card-header, th, td {
+	font-family: 'Montserrat', sans-serif;
+}
+.table-border {
+	width: 70%;
+}
+.main-img-height {
+	max-height: 50%;
+	max-width: 50%;
+	margin: auto;
+}

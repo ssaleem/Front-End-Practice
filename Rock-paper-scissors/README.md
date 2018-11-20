@@ -1,0 +1,2 @@
+# Rock, paper, scissors
+This project creates the rock, paper scissors game. The page uses Bootstrap4. Project demo can be found [here](http://htmlpreview.github.io/?https://github.com/ssaleem/Front-End-Practice/blob/master/Rock-paper-scissors/index.html)
